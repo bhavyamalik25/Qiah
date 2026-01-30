@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring Collection | Artisanal Pieces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: #faf9f6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 60px 0 40px;
+      font-weight: 500;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 0 6%;
+      margin-bottom: 100px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    .product-info {
+      padding: 15px 20px;
+      text-align: center;
+    }
+    .product-info h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+    .product-info p {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    .product-info span {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid #333;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #333;
+      transition: 0.3s;
+    }
+    .product-info span:hover {
+      background: #333;
+      color: #fff;
+    }
+    a.back-link {
+      display: block;
+      text-align: center;
+      margin: 40px 0;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    a.back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <h1>Summer Collection</h1>
+
+  <div class="grid-container">
+
+    <div class="product-card">
+      <img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\download (6).jfif">
+      <div class="product-info">
+        <h3>Grey Cord-Set<h3>
+        <p>$120</p>
+        <span>Add to Cart</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\download (5).jfif">
+      <div class="product-info">
+        <h3>Polka Dot Top</h3>
+        <p>$85</p>
+        <span>Add to Cart</span>
+      </div>
+    </div>
+<div class="product-card">
+<img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\Summer Outfit Ideas.jfif">
+<div class="product-info">
+<h3>Blue & White Bow Top</h3>
+<p>$70</p>
+<span>Add to Cart</span>
+</div>
+</div>
+
+    <div class="product-card">
+      <img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\SHOP THE FULL LINK HERE 💛___date outfit inspo, date night outfit, casual dinner outfit inspo, girls night outfit idea, gno outfit, summer date outfit, summer outfit inspo, summer look_.jfif">
+      <div class="product-info">
+        <h3>Butter Yellow Top</h3>
+        <p>$95</p>
+        <span>Add to Cart</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\download (4).jfif">
+      <div class="product-info">
+        <h3>White Dress</h3>
+        <p>$75</p>
+        <span>Add to Cart</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="C:\Users\REFURBISHED MASTERS\OneDrive\Desktop\Qiah\download (7).jfif">
+      <div class="product-info">
+        <h3>Top + Bottoms Set</h3>
+        <p>$90</p>
+        <span>Add to Cart</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+</body>
+</html>
