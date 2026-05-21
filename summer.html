@@ -3,146 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spring Collection | Artisanal Pieces</title>
+  <title>Summer Collection | Qiah</title>
+  <link rel="stylesheet" href="qiah-shared.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Playfair Display', serif;
       background-color: #faf9f6;
-      margin: 0;
-      padding: 0;
-      color: #333;
+      margin: 0; padding: 0; color: #333;
     }
     h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin: 60px 0 40px;
-      font-weight: 500;
+      text-align: center; font-size: 2.5rem;
+      margin: 60px 0 40px; font-weight: 500;
     }
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 0 6%;
-      margin-bottom: 100px;
+      gap: 40px; padding: 0 6%; margin-bottom: 100px;
     }
     .product-card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
+      background: #fff; border-radius: 12px; overflow: hidden;
       box-shadow: 0 5px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      cursor: pointer; position: relative;
     }
     .product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
-    .product-card img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .product-card:hover img {
-      transform: scale(1.05);
-    }
-    .product-info {
-      padding: 15px 20px;
-      text-align: center;
-    }
-    .product-info h3 {
-      margin: 10px 0;
-      font-size: 1.2rem;
-    }
-    .product-info p {
-      color: #777;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-    .product-info span {
-      display: inline-block;
-      padding: 8px 20px;
-      border: 1px solid #333;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: #333;
-      transition: 0.3s;
-    }
-    .product-info span:hover {
-      background: #333;
-      color: #fff;
-    }
+    .product-info { padding: 15px 20px; text-align: center; }
+    .product-info h3 { margin: 10px 0; font-size: 1.2rem; }
+    .product-info p { color: #777; font-size: 0.9rem; margin-bottom: 4px; }
     a.back-link {
-      display: block;
-      text-align: center;
-      margin: 40px 0;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
+      display: block; text-align: center; margin: 40px 0;
+      text-decoration: none; color: #333; font-weight: 500;
     }
     a.back-link:hover { text-decoration: underline; }
+    .page-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6%; border-bottom: 1px solid #eee;
+    }
+    .page-nav .logo { font-size: 1.4rem; font-weight: 500; }
+    .page-nav .nav-icons { display: flex; gap: 20px; }
+    .page-nav a { text-decoration: none; color: #333; font-size: 0.9rem; }
   </style>
 </head>
 <body>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-footer-total">
+        <span>Total</span>
+        <span id="cart-total">$0</span>
+      </div>
+      <button class="cart-checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="search-close" onclick="closeSearch()">✕</button>
+    <div class="search-inner">
+      <div class="search-input-wrap">
+        <input type="text" id="search-input" placeholder="Search pieces…">
+      </div>
+      <div id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Mini nav -->
+  <div class="page-nav">
+    <a href="index.html" class="logo">Qiah</a>
+    <div class="nav-icons">
+      <a href="#" onclick="openSearch(); return false;">Search</a>
+      <a href="#" class="cart-count" onclick="openCart(); return false;">Cart (0)</a>
+    </div>
+  </div>
 
   <h1>Summer Collection</h1>
 
   <div class="grid-container">
 
     <div class="product-card">
-      <img src="images/grey-cord.jfif">
+      <div class="card-img-wrap">
+        <img src="images/grey-cord.jfif" alt="Grey Cord-Set">
+        <button class="wishlist-btn" data-name="Grey Cord-Set" onclick="toggleWishlist('Grey Cord-Set', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
         <h3>Grey Cord-Set</h3>
         <p>$120</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'Grey Cord-Set', 120)">Add to Cart</button>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="images/polka-dot-top.jfif">
+      <div class="card-img-wrap">
+        <img src="images/polka-dot-top.jfif" alt="Polka Dot Top">
+        <button class="wishlist-btn" data-name="Polka Dot Top" onclick="toggleWishlist('Polka Dot Top', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
         <h3>Polka Dot Top</h3>
         <p>$85</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'Polka Dot Top', 85)">Add to Cart</button>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="images/bow-top.jfif">
+      <div class="card-img-wrap">
+        <img src="images/bow-top.jfif" alt="Blue & White Bow Top">
+        <button class="wishlist-btn" data-name="Blue & White Bow Top" onclick="toggleWishlist('Blue & White Bow Top', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
-        <h3>Blue & White Bow Top</h3>
+        <h3>Blue &amp; White Bow Top</h3>
         <p>$70</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'Blue & White Bow Top', 70)">Add to Cart</button>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="images/butter-yellow-top.jfif">
+      <div class="card-img-wrap">
+        <img src="images/butter-yellow-top.jfif" alt="Butter Yellow Top">
+        <button class="wishlist-btn" data-name="Butter Yellow Top" onclick="toggleWishlist('Butter Yellow Top', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
         <h3>Butter Yellow Top</h3>
         <p>$95</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'Butter Yellow Top', 95)">Add to Cart</button>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="images/white-dress.jfif" alt="White Dress">
+      <div class="card-img-wrap">
+        <img src="images/white-dress.jfif" alt="White Dress">
+        <button class="wishlist-btn" data-name="White Dress" onclick="toggleWishlist('White Dress', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
         <h3>White Dress</h3>
         <p>$75</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'White Dress', 75)">Add to Cart</button>
       </div>
     </div>
 
     <div class="product-card">
-      <img src="images/summer-set.jfif">
+      <div class="card-img-wrap">
+        <img src="images/summer-set.jfif" alt="Top + Bottoms Set">
+        <button class="wishlist-btn" data-name="Top + Bottoms Set" onclick="toggleWishlist('Top + Bottoms Set', this)" title="Save to wishlist">♡</button>
+      </div>
       <div class="product-info">
         <h3>Top + Bottoms Set</h3>
         <p>$90</p>
-        <span>Add to Cart</span>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="handleAddToCart(this, 'Top + Bottoms Set', 90)">Add to Cart</button>
       </div>
     </div>
 
@@ -150,5 +211,23 @@
 
   <a href="index.html" class="back-link">← Back to Home</a>
 
+  <script src="qiah-shared.js"></script>
+  <script>
+    function selectSize(btn) {
+      const group = btn.closest('.size-selector');
+      group.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+    function handleAddToCart(btn, name, price) {
+      const card = btn.closest('.product-card');
+      const selected = card.querySelector('.size-btn.selected');
+      if (!selected) {
+        btn.textContent = 'Pick a size!';
+        setTimeout(() => btn.textContent = 'Add to Cart', 1500);
+        return;
+      }
+      addToCart(name, price, selected.textContent);
+    }
+  </script>
 </body>
 </html>
