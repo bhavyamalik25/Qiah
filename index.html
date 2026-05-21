@@ -5,41 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qiah | Curated Modern Boutique</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="qiah-shared.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- Cart Overlay -->
-  <div class="cart-overlay" id="cart-overlay"></div>
-
-  <!-- Cart Drawer -->
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <button class="cart-close-btn" onclick="closeCart()">✕</button>
-    </div>
-    <div class="cart-body" id="cart-body"></div>
-    <div class="cart-footer" id="cart-footer" style="display:none;">
-      <div class="cart-footer-total">
-        <span>Total</span>
-        <span id="cart-total">$0</span>
-      </div>
-      <button class="cart-checkout-btn">Checkout</button>
-    </div>
-  </div>
-
-  <!-- Search Overlay -->
-  <div class="search-overlay" id="search-overlay">
-    <button class="search-close" onclick="closeSearch()">✕</button>
-    <div class="search-inner">
-      <div class="search-input-wrap">
-        <input type="text" id="search-input" placeholder="Search pieces…">
-      </div>
-      <div id="search-results"></div>
-    </div>
-  </div>
-
   <!-- Ticker -->
   <div class="ticker-wrap">
     <div class="ticker">
@@ -49,24 +17,19 @@
       <span class="ticker-item">FREE SHIPPING ON ORDERS OVER $200</span>
     </div>
   </div>
-
   <!-- Navigation -->
   <nav class="navbar">
     <div class="logo">Qiah</div>
-    <ul class="nav-links" id="nav-links">
+    <ul class="nav-links">
       <li><a href="#collection">Shop</a></li>
       <li><a href="#categories">Categories</a></li>
       <li><a href="#story">Our Story</a></li>
     </ul>
     <div class="nav-icons">
-      <a href="#" onclick="openSearch(); return false;">Search</a>
-      <a href="#" class="cart-count" onclick="openCart(); return false;">Cart (0)</a>
+      <a href="#">Search</a>
+      <a href="#">Cart (0)</a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
-
   <!-- Hero -->
   <header class="hero">
     <img src="images/hero-photo.jpg" class="hero-img" alt="Hero Image">
@@ -76,18 +39,16 @@
       <a href="#collection" class="btn-primary">Shop the Collection</a>
     </div>
   </header>
-
   <section class="atelier-note">
-    <div class="atelier-inner">
-      <h2>Made Slowly, Worn Forever</h2>
-      <p>
-        Every piece is designed with intention, rooted in craftsmanship,
-        natural movement, and timeless silhouettes. We believe clothing
-        should feel personal, lived-in, and quietly powerful.
-      </p>
-    </div>
-  </section>
-
+  <div class="atelier-inner">
+    <h2>Made Slowly, Worn Forever</h2>
+    <p>
+      Every piece is designed with intention, rooted in craftsmanship,
+      natural movement, and timeless silhouettes. We believe clothing
+      should feel personal, lived-in, and quietly powerful.
+    </p>
+  </div>
+</section>
   <!-- Categories -->
   <section id="categories" class="categories">
     <div class="category-item">
@@ -105,58 +66,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonials-track">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"The cashmere scarf is the softest thing I've ever worn. I've had so many compliments — truly a forever piece."</p>
-        <span class="testimonial-author">— Amélie R., Paris</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"The quality exceeded my expectations. The Grey Cord-Set fits beautifully and the fabric feels incredibly luxurious."</p>
-        <span class="testimonial-author">— Saoirse M., Dublin</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Ordered the Butter Yellow Top and it arrived so well-packaged. It's become my most worn piece this season."</p>
-        <span class="testimonial-author">— Zara K., London</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Returns & Shipping Accordion -->
-  <section class="accordion-section">
-    <h2>Returns & Shipping</h2>
-    <div class="accordion-item">
-      <button class="accordion-trigger">
-        Shipping Information <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>We offer free standard shipping on all orders over $200. Orders are processed within 1–2 business days and typically arrive within 5–7 business days. Express shipping is available at checkout for an additional fee.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion-trigger">
-        Returns & Exchanges <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>We accept returns within 14 days of delivery. Items must be unworn, unwashed, and in their original condition with tags attached. To initiate a return, please contact us at hello@qiah.com. Exchanges are subject to availability.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion-trigger">
-        International Orders <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-body">
-        <p>We currently ship to select international destinations. International orders may be subject to customs duties and taxes, which are the responsibility of the customer. Delivery times vary by location (typically 10–14 business days).</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Story -->
   <section id="story" class="brand-story">
     <div class="story-content">
@@ -167,7 +76,6 @@
       <a href="#" class="btn-secondary">Learn More</a>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
     <div class="footer-grid">
@@ -190,28 +98,5 @@
     </div>
     <p class="copyright">© 2026 Qiah.</p>
   </footer>
-
-  <script src="qiah-shared.js"></script>
-  <script>
-    // Hamburger menu
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('nav-links').classList.toggle('open');
-    });
-    // Accordion
-    document.querySelectorAll('.accordion-trigger').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const body = btn.nextElementSibling;
-        const isOpen = btn.classList.contains('active');
-        document.querySelectorAll('.accordion-trigger').forEach(b => {
-          b.classList.remove('active');
-          b.nextElementSibling.style.maxHeight = null;
-        });
-        if (!isOpen) {
-          btn.classList.add('active');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
